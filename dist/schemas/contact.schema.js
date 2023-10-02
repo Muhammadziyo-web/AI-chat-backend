@@ -1,8 +1,7 @@
 import validator from "validator";
-import { IContact } from '../interface/interface.js';
 import { isEmailValid } from "../middleware/email.cheker.js";
-import mongoose, { Schema, Document, model, Types } from 'mongoose';
-const contactSchema = new Schema<IContact>({
+import { Schema, model, Types } from 'mongoose';
+const contactSchema = new Schema({
     fullName: {
         type: String,
         required: true
@@ -19,7 +18,7 @@ const contactSchema = new Schema<IContact>({
         type: String,
         required: true,
         validate: {
-            validator: (value: string) => {
+            validator: (value) => {
                 return validator.isNumeric(value);
             }
         }
@@ -33,5 +32,4 @@ const contactSchema = new Schema<IContact>({
         required: true
     },
 });
-
-export default model<IContact>('Contact', contactSchema);
+export default model('Contact', contactSchema);

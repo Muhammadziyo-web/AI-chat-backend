@@ -2,7 +2,11 @@ import validator from "validator";
 import { isEmailValid } from "../middleware/email.cheker.js";
 import mongoose, { Schema, Document, model, Types } from "mongoose";
 const UserChema = new Schema({
-  userEmail: {
+  fullName: {
+    type: String,
+    required: true,
+  },
+  email: {
     type: String,
     required: true,
     unique: true,
@@ -15,19 +19,12 @@ const UserChema = new Schema({
     type: String,
     required: true,
   },
-  role: {
-    type: String,
-    enum: ["user", "admin"],
-    default: "user",
-  },
-  posts: {
-    type: [
-      {
-        ref: "Contact",
-        type: [mongoose.Types.ObjectId,"Invalid ID"],
-      },
-    ],
-  },
+  chats: [
+    {
+      type: Types.ObjectId,
+      ref: "Chats",
+    },
+  ],
 });
 
 export default model("User", UserChema);
