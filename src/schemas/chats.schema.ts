@@ -9,7 +9,7 @@ const UserChema = new Schema({
   messages: [
     {
       type: Types.ObjectId,
-      ref: "Messages",
+      ref: "Messages", 
     },
   ],
   createdAt: { type: Date, default: Date.now }

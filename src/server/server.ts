@@ -19,8 +19,7 @@ app.get("/api", async (req: Request, res: Response) => {
     try {
         res.status(200).json({
             success: true,
-            message: "Welcome to the Jop API.",
-            postmen: "https://documenter.getpostman.com/view/24139682/2s93si1pwE",
+            message: "Welcome to the Jop API."
         });
     } catch (error: unknown) {
         res.status(500).json({ success: false, error: (error as Error).message });
